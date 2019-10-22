@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method="post" action="">
+{% csrf_token %} <!-- 보안상 공격방어  -->
+<table class="table">
+			
+			<tr>
+				<th>상품</th>
+				<td><select class="form-control" id="prodno" name="prodno">
+{% for product in prodlist %}
+<option value="{{product.id}}">{{product.name}}</option>
+{% endfor %}
+</select></td>
+			</tr>
+			<tr>
+				<th>시작일</th>
+				<td><div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" id="start" name="start" data-target="#datetimepicker1" style="width: 280px;"/>
+                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div></td>
+			</tr>
+			<tr>
+				<th>종료일</th>
+				<td><div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" id="end" name="end" data-target="#datetimepicker1" style="width: 280px;"/>
+                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div></td>
+			</tr>
+			<tr>
+				<th>가격</th>
+				<td><input class="form-control" type="text" id="price" placeholder="가격" name="price"></td>
+			</tr>
+			<tr>
+				<th>단위</th>
+				<td><input class="form-control" type="text" id="unit" placeholder="단위"  name="unit" style="width:280px;"></td>
+			</tr>
+			<tr>
+			<td colspan="2"><input class="btn btn-success" type="submit" value="전송">
+				<button type="button" class="btn btn-primary"
+				onclick="location.href='/OMS/price/'">목록</button></td>
+		</tr>
+		</table>
+
+
+
+</form>
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({locale: 'ko', format:'YYYY-MM-DD HH:MM:ss'});
+            });
+        </script>
+        
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker({locale: 'ko', format:'YYYY-MM-DD HH:MM:ss'});
+            });
+        </script>        
+{% if price %}
+<script>
+document.getElementById('prodno').selectedIndex = {{price.prodno.id}}-1;
+document.getElementById('start').value = "{{price.start}}";
+document.getElementById('end').value = "{{price.end}}";
+document.getElementById('price').value = "{price.price}}";
+document.getElementById('unit').value = "{{price.unit}}";
+
+
+
+</script>
+{% endif %}
+{% endblock content %}
+ <script>
+document.getElementById('collapsePages1').className += " show";
+document.getElementById('pricereg').className += " active";
+</script>

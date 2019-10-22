@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+	<div id="header_div"></div>
+	<div class="container" align="center">
+		<h1>가격 정보</h1>
+		<table class="table">
+
+			<tr>
+				<th>번호</th>
+				<td>{{prices.id}}</td>
+			</tr>
+			<tr>
+				<th>상품</th>
+				<td>{{prices.prodno.name}}</td>
+			</tr>
+			<tr>
+				<th>적용기간</th>
+				<td>{{prices.start}} ~ {{prices.end}}</td>
+			</tr>
+			<tr>
+				<th>가격</th>
+				<td>{{prices.price}}</td>
+			</tr>
+			<tr>
+				<th>단위</th>
+				<td>{{prices.unit}}</td>
+			</tr>
+
+		</table>
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/price'">목록</button>
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/priceedit/{{prices.id}}'">수정</button>
+	</div>
+{% endblock content %} 
+ <script>
+document.getElementById('collapsePages1').className += " show";
+document.getElementById('postres').className += " active";
+</script>

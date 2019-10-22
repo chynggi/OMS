@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+	<div id="header_div"></div>
+	<div class="container" align="center">
+		<h1>업체 정보</h1>
+		<table class="table">
+
+			<tr>
+				<th>순번</th>
+				<td>{{buss.id}}</td>
+			</tr>
+			<tr>
+				<th>사업자 등록번호</th>
+				<td>{{buss.regno1}}-{{buss.regno2}}-{{buss.regno3}}</td>
+			</tr>
+			<tr>
+				<th>업체 이름</th>
+				<td>{{buss.name}}</td>
+			</tr>
+			<tr>
+				<th>업체 코드</th>
+				<td>{{buss.code}}</td>
+			</tr>
+			<tr>
+				<th>업체 주소</th>
+				<td>{{buss.address}}</td>
+			</tr>
+
+		</table>
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/business'">목록</button>
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/bussedit/{{buss.id}}'">수정</button>
+	</div>
+{% endblock content %}
+<script>
+document.getElementById('collapsePages3').className += " show";
+document.getElementById('business').className += " active";
+</script>

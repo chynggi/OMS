@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block content %}
+<form method="post" action="">
+	{% csrf_token %}
+	<!-- 보안상 공격방어  -->
+	<table class="table table-bordered">
+		<tr>
+			<th>사업자등록번호:</th>
+			<td><input class="form-control" type="text" id="regno1"
+				name="regno1" style="width: 35px;">- <input
+				class="form-control" type="text" id="regno2" name="regno2"
+				style="width: 50px;">- <input class="form-control"
+				type="text" id="regno3" name="regno3" style="width: 65px;">
+			</td>
+		</tr>
+		<tr>
+			<th>업체이름:</th>
+			<td><input class="form-control" type="text" id="name"
+				placeholder="업체 이름" name="name" style="width: 280px;"></td>
+		</tr>
+		<tr>
+			<th>업체코드:</th>
+			<td><input class="form-control" type="text" id="code"
+				placeholder="업체 코드" name="code" style="width: 280px;"><br>
+			</td>
+		</tr>
+		<tr>
+			<th>업체주소:</th>
+			<td><input class="form-control" type="text" id="address"
+				placeholder="주소" name="address" style="width: 280px;"><br>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input class="btn btn-success" type="submit"
+				value="전송">
+				<button type="button" class="btn btn-primary"
+					onclick="location.href='/OMS/business/'">목록</button></td>
+		</tr>
+
+	</table>
+</form>
+
+
+{% if buss %}
+<script>
+	document.getElementById('regno1').value = "{{buss.regno1}}";
+	document.getElementById('regno2').value = "{{buss.regno2}}";
+	document.getElementById('regno3').value = "{{buss.regno3}}";
+	document.getElementById('name').value = "{{buss.name}}";
+	document.getElementById('code').value = "{{buss.code}}";
+	document.getElementById('address').value = "{{buss.address}}";
+</script>
+{% endif %} {% endblock content %}
+<script>
+	document.getElementById('collapsePages3').className += " show";
+	document.getElementById('bussreg').className += " active";
+</script>

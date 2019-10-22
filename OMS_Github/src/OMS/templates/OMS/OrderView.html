@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+	<div id="header_div"></div>
+	<div class="container" align="center">
+		<h1>주문 정보</h1>
+		<table class="table">
+			<tr>
+				<th>주문ID</th>
+				<td>{{order.id}}</td>
+			</tr>
+			<tr>
+				<th>날짜</th>
+				<td>{{order.date}}</td>
+			</tr>
+			<tr>
+				<th>주문고객</th>
+				<td>{{order.cusno.name}}</td>
+			</tr>
+			<tr>
+				<th>주문상품</th>
+				<td>{{order.prodno.name}}</td>
+			</tr>
+			<tr>
+				<th>주문수량</th>
+				<td>{{order.units}}</td>
+			</tr>
+
+		</table>
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/Orders'">목록</button>
+			{% if request.session.userid == 'admin' %}
+			<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/Orderedit/{{order.id}}'">수정</button>
+			{% else %}
+			<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/Ordereditcus/{{order.id}}'">수정</button>
+			{% endif %}
+	</div>
+{% endblock content %}
+<script>
+document.getElementById('collapsePages2').className += " show";
+document.getElementById('orders').className += " active";
+</script>

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+	<div id="header_div"></div>
+	<div class="container" align="center">
+		<h1>고객정보</h1>
+		<table class="table">
+			<tr>
+				<th>고객번호</th>
+				<td>{{custom.id}}</td>
+			</tr>
+			<tr>
+				<th>고객id</th>
+				<td>{{custom.userid}}</td>
+			</tr>
+			<tr>
+				<th>고객이름</th>
+				<td>{{custom.name}}</td>
+			</tr>
+			<tr>
+					<th>전화번호</th>
+			<td>{{custom.phone}}</td>
+			</tr>
+			<tr>
+					
+			<th>우편번호</th>
+			<td>{{custom.postal}}</td>
+			</tr>
+			<tr>
+					
+			<th>고객주소</th>
+			<td>{{custom.address}}</td>
+			</tr>
+			<tr>
+					
+			<th>상세주소</th>
+			<td>{{custom.address_ex1}}</td>
+			</tr>
+			<tr><th>참고주소</th>
+			<td>{{custom.address_ex2}}</td>
+			</tr>	
+			
+		
+		</table>
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/postresult'">목록</button>
+			<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/postaledit/{{custom.id}}'">수정</button>
+	</div>
+ {% endblock content %}
+ <script>
+document.getElementById('collapsePages1').className += " show";
+document.getElementById('postres').className += " active";
+</script>

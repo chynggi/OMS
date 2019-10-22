@@ -1,0 +1,67 @@
+{% extends "base.html" %} {% block content %}
+<form method="post" action="">
+	{% csrf_token %}
+	<!-- 보안상 공격방어  -->
+	<table class="table table-bordered">
+		<tr>
+			<th>날짜</th>
+			
+			<td>
+			<div class="form-group">
+                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" id="date" name="date" data-target="#datetimepicker1" style="width: 280px;"/>
+                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div></td>
+		</tr>
+		<tr>
+			<th>주문고객</th>
+			<td><select class="form-control" id="cusno" name="cusno">
+				{% for custom in customList %}
+				<option value="{{custom.id}}">{{custom.name}}</option>
+				{% endfor %}
+				</select></td>
+		</tr>
+		<tr>
+			<th>주문상품</th>
+			<td><select class="form-control" id="prodno" name="prodno"> 
+			{% for product in prodlist %}
+			<option value="{{product.id}}">{{product.name}}</option> 
+			{% endfor %}
+		</select></td>
+		</tr>
+		<tr>
+			<th>주문수량</th>
+			<td><input class="form-control" type="text" id="units" placeholder="수량" name="units"
+			style="width: 280px;"></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input class="btn btn-success" type="submit" value="전송">
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/Orders/'">목록</button></td>
+		</tr>
+		
+	</table>
+</form>
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({locale: 'ko', format:'YYYY-MM-DD HH:MM:ss'});
+            });
+        </script>
+{% if order %}
+<script>
+document.getElementById('date').value = "{{order.date}}";
+document.getElementById('cusno').selectedIndex = "{{order.cusno}}-1";
+document.getElementById('prodno').selectedIndex = {{order.prodno.id}}-1;
+document.getElementById('units').value = "{{order.units}}";
+
+
+</script>
+{% endif %} {% endblock content %}
+
+<script>
+document.getElementById('collapsePages2').className += " show";
+document.getElementById('orderreg').className += " active";
+</script>

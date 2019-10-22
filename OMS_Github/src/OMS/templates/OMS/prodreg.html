@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method="post" action="">
+{% csrf_token %} <!-- 보안상 공격방어  -->
+
+<table class="table">			
+			<tr>
+				<th>상품이름</th>
+				<td><input class="form-control" type="text" id="name" placeholder="상품이름" name="name" style="width:280px;"></td>
+			</tr>
+			<tr>
+				<th>분류</th>
+				<td><input class="form-control" type="text" id="category" placeholder="상품분류" name="category" style="width:280px;"></td>
+			</tr>
+			<tr>
+				<th>재고</th>
+				<td><input class="form-control" type="text" id="units" placeholder="재고" name="units" style="width:280px;"></td>
+			</tr>
+			<tr>
+				<th>제작사</th>
+				<td><select class="form-control" id="busno" name="busno">
+{% for buss in busslist %}
+<option value="{{buss.id}}">{{buss.name}}</option>
+{% endfor %}
+</select></td>
+			</tr>
+			<tr>
+			<td colspan="2"><input class="btn btn-success" type="submit" value="전송">
+				<button type="button" class="btn btn-primary"
+				onclick="location.href='/OMS/product/'">목록</button></td>
+		</tr>
+		</table>
+
+</form>
+
+{% if prod %}
+<script>
+document.getElementById('busno').selectedIndex = {{prod.busno.id}};
+document.getElementById('name').value = "{{prod.name}}";
+document.getElementById('category').value = "{{prod.category}}";
+document.getElementById('units').value = "{{prod.units}}";
+
+
+
+</script>
+{% endif %}
+{% endblock content %}
+ <script>
+document.getElementById('collapsePages1').className += " show";
+document.getElementById('prodreg').className += " active";
+</script>

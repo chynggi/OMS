@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container" align="center">
+		<h1>상품 리스트</h1>
+		<table id="dataTable" class="table table-striped table-bordered"
+			style="width: 100%">
+			<thead>
+				<th>상품번호</th>
+				<th>상품이름</th>
+				<th>분류</th>
+				<th>재고</th>
+				<th>제작사</th>
+				<th>삭제</th>
+			</thead>
+			<tbody>
+				{% for product in prodlist %}
+				<tr>
+					<td><a href="/OMS/prodview/{{product.id}}">{{product.id}}</a></td>
+					<td><a href="/OMS/prodview/{{product.id}}">{{product.name}}</a></td>
+					<td>{{product.category}}</td>
+					<td>{{product.units}}</td>
+					<td>{{product.busno.name}}</td>
+					<td><a class="btn btn-danger" href="#" data-toggle="modal" data-target="#deletemodal{{product.id}}">삭제</a>
+					<div class="modal fade" id="deletemodal{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">정말로 삭제하시겠습니까?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">삭제 후에는 되돌릴 수 없습니다.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+          <a class="btn btn-danger" href="/OMS/delete/prod/{{product.id}}">삭제</a>
+        </div>
+      </div>
+    </div>
+  </div></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			<tfooter>
+			<thead>
+				<th>상품번호</th>
+				<th>상품이름</th>
+				<th>분류</th>
+				<th>재고</th>
+				<th>제작사</th>
+				<th>삭제</th>
+			</thead>
+			</tfooter>
+
+		</table>
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/prodreg'">글쓰기</button>
+	</div>
+	<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">정말로 삭제하시겠습니까?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">삭제 후에는 되돌릴 수 없습니다.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+          <a class="btn btn-danger" href="/OMS/delete/prod/{{product.id}}">삭제</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+ <script>
+document.getElementById('collapsePages1').className += " show";
+document.getElementById('prod').className += " active";
+</script>
+{% block datatable %}
+
+  <script src="/static/js/demo/datatables-demo.js"></script>
+{% endblock datatable %}

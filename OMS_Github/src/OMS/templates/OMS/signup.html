@@ -1,0 +1,45 @@
+{% extends "signuptmp.html" %}
+{% block content %}
+
+
+ <!-- 보안상 공격방어  -->
+<div class="form-label-group">
+<input class="form-control" type="text" id="userid" placeholder="고객ID" name="userid">
+<label for="userid">ID</label>
+</div>
+<div class="form-label-group">
+<input class="form-control" type="password" id="password" placeholder="비밀번호" name="password" >
+<label for="password">비밀번호</label>
+</div>
+<div class="form-label-group">
+<input class="form-control" type="text" id="name" placeholder="고객이름" name="name" >
+<label for="name">고객이름</label>
+</div>
+<div class="form-label-group">
+<input class="form-control" type="text" id="phone" placeholder="전화번호" name="phone" >
+<label for="phone">전화번호</label>
+</div>
+<div class="form-label-group">
+<input class="form-control" type="text" id="sample3_postcode" placeholder="우편번호" name="postal">
+<label for="sample3_postcode">우편번호</label>
+</div>
+<div class="form-label-group">
+<button type="button" class="btn btn-lg btn-success btn-block text-uppercase" data-toggle="modal"
+		onclick="sample3_execDaumPostcode()" data-target="#idconfirm">우편번호 찾기</button>
+</div>
+<div class="form-label-group">
+<input class="form-control" type="text" id="sample3_address" placeholder="주소"  name="address" >
+<label for="sample3_address">고객주소</label>
+</div>
+<div class="form-label-group">
+<input class="form-control" type="text" id="sample3_detailAddress" placeholder="상세주소"  name="address_ex1" >
+<label for="sample3_detailAddress">상세주소</label>
+</div>
+
+<div class="form-label-group">
+<input class="form-control" type="text" id="sample3_extraAddress" placeholder="참고주소"  name="address_ex2">
+<label for="sample3_extraAddress">참고사항</label>
+</div>
+
+
+{% endblock content %}

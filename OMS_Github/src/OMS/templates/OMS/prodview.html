@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+	<div id="header_div"></div>
+	<div class="container" align="center">
+		<h1>상품 정보</h1>
+		<table class="table">
+
+			<tr>
+				<th>상품번호</th>
+				<td>{{product.id}}</td>
+			</tr>
+			<tr>
+				<th>상품이름</th>
+				<td>{{product.name}}</td>
+			</tr>
+			<tr>
+				<th>분류</th>
+				<td>{{product.category}}</td>
+			</tr>
+			<tr>
+				<th>재고</th>
+				<td>{{product.units}}</td>
+			</tr>
+			<tr>
+				<th>제작사</th>
+				<td>{{product.busno.name}}</td>
+			</tr>
+		</table>
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/product'">목록</button>
+			<button type="button" class="btn btn-primary"
+			onclick="location.href='/OMS/prodedit/{{product.id}}'">수정</button>
+	</div>
+{% endblock content %}
+ <script>
+document.getElementById('collapsePages1').className += " show";
+document.getElementById('prod').className += " active";
+</script>
